@@ -1,3 +1,9 @@
+# Default CMake build directory
+build/
+
+# VSCode config directory
+.vscode/
+
 # Prerequisites
 *.d
 
