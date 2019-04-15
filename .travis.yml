@@ -49,9 +49,9 @@ matrix:
 before_install:
   - sudo apt-get update -qq
   - sudo apt purge --auto-remove cmake
-  - mkdir cmake
+  - mkdir $HOME/cmake
   - wget https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz -O $HOME/cmake.tar.gz
-  - tar xvzf $HOME/cmake.tar.gz -C $HOME/cmake
+  - tar xzf $HOME/cmake.tar.gz -C $HOME/cmake
   - export PATH=$HOME/cmake/bin:$PATH
   - mkdir $HOME/clang+llvm
   - export PATH=$HOME/clang+llvm/bin:$PATH
