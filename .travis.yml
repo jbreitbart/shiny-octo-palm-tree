@@ -66,5 +66,5 @@ script:
   - make
   - make test
   - cd ..
-  - if [ -n "$RUNCLANGTIDY" ]; then clang-tidy -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-*; fi
+  - if [ -n "$RUNCLANGTIDY" ]; then run-clang-tidy.py -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-*; fi
 #  - if [ -n "$RUNCLANGTIDY" ]; then clang-tidy -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='app' -p build src/main.cpp; fi
