@@ -63,4 +63,4 @@ include_directories(vendor/catch2/include/)
 
 enable_testing()
 ADD_SUBDIRECTORY(skeleton)
-ADD_SUBDIRECTORY(tasks)
+#ADD_SUBDIRECTORY(tasks)
