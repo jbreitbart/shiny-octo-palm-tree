@@ -43,6 +43,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic)
 
     # silence warnings coming from spdlog
+    add_compile_options(-Wno-unused-member-function -Wno-float-equal)
     add_compile_options(-Wno-padded -Wno-weak-vtables -Wno-switch-enum -Wno-exit-time-destructors -Wno-global-constructors)
   endif()
 

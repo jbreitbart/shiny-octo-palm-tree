@@ -54,7 +54,7 @@ before_install:
   - tar xzf $HOME/cmake.tar.gz -C $HOME/cmake --strip-components 1
   - export PATH=$HOME/cmake/bin:$PATH
   - mkdir $HOME/clang+llvm
-  - export PATH=$HOME/clang+llvm/bin:$PATH
+  - export PATH=$HOME/clang+llvm/bin:$HOME/clang+llvm/share/clang:$PATH
   - if [ -n "$CLANGV" ]; then wget http://releases.llvm.org/$CLANGV/clang+llvm-$CLANGV-x86_64-linux-gnu-ubuntu-16.04.tar.xz -O
    $HOME/clang+llvm.tar.xz; fi
   - if [ -n "$CLANGV" ]; then tar xf $HOME/clang+llvm.tar.xz -C $HOME/clang+llvm --strip-components 1; fi
@@ -66,4 +66,5 @@ script:
   - make
   - make test
   - cd ..
-  - if [ -n "$RUNCLANGTIDY" ]; then clang-tidy -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='app' -p build src/main.cpp; fi
+  - if [ -n "$RUNCLANGTIDY" ]; then clang-tidy -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-*; fi
+#  - if [ -n "$RUNCLANGTIDY" ]; then clang-tidy -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='app' -p build src/main.cpp; fi
