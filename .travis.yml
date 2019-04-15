@@ -51,11 +51,11 @@ before_install:
   - sudo apt purge --auto-remove cmake
   - mkdir $HOME/cmake
   - wget https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-Linux-x86_64.tar.gz -O $HOME/cmake.tar.gz
-  - tar xzf $HOME/cmake.tar.gz -C $HOME/cmake
+  - tar xzf $HOME/cmake.tar.gz -C $HOME/cmake --strip-components 1
   - export PATH=$HOME/cmake/bin:$PATH
   - mkdir $HOME/clang+llvm
   - export PATH=$HOME/clang+llvm/bin:$PATH
-  - if [ -n "$CLANGV" ]; then wget http://llvm.org/releases/$CLANGV/clang+llvm-$CLANGV-x86_64-linux-gnu-debian8.tar.xz -O
+  - if [ -n "$CLANGV" ]; then wget http://releases.llvm.org/$CLANGV/clang+llvm-$CLANGV-x86_64-linux-gnu-ubuntu-16.04.tar.xz -O
    $HOME/clang+llvm.tar.xz; fi
   - if [ -n "$CLANGV" ]; then tar xf $HOME/clang+llvm.tar.xz -C $HOME/clang+llvm --strip-components 1; fi
 
