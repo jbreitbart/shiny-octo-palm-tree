@@ -3328,7 +3328,7 @@ struct float_spec_handler
             upper = true;
     }
 
-    void on_error()
+    [[noreturn] void on_error()
     {
         FMT_THROW(format_error("invalid type specifier"));
     }

@@ -410,10 +410,10 @@ public:
     FMT_CONSTEXPR basic_string_view(const Char *s, size_t count) FMT_NOEXCEPT : data_(s), size_(count) {}
 
     /**
-      \rst
+
       Constructs a string reference object from a C string computing
       the size with ``std::char_traits<Char>::length``.
-      \endrst
+
      */
     basic_string_view(const Char *s)
         : data_(s)
@@ -498,7 +498,7 @@ typedef basic_string_view<char> string_view;
 typedef basic_string_view<wchar_t> wstring_view;
 
 /**
-  \rst
+
   The function ``to_string_view`` adapts non-intrusively any kind of string or
   string-like type if the user provides a (possibly templated) overload of
   ``to_string_view`` which takes an instance of the string class
@@ -517,7 +517,7 @@ typedef basic_string_view<wchar_t> wstring_view;
     }
 
     std::string message = fmt::format(my_string("The answer is {}"), 42);
-  \endrst
+
  */
 template<typename Char>
 inline basic_string_view<Char> to_string_view(basic_string_view<Char> s)
@@ -985,11 +985,11 @@ struct monostate
 };
 
 /**
-  \rst
+
   Visits an argument dispatching to the appropriate visit method based on
   the argument type. For example, if the argument type is ``double`` then
   ``vis(value)`` will be called with the value of type ``double``.
-  \endrst
+
  */
 template<typename Visitor, typename Context>
 FMT_CONSTEXPR typename internal::result_of<Visitor(int)>::type visit_format_arg(Visitor &&vis, const basic_format_arg<Context> &arg)
@@ -1368,11 +1368,11 @@ typedef buffer_context<char>::type format_context;
 typedef buffer_context<wchar_t>::type wformat_context;
 
 /**
-  \rst
+
   An array of references to arguments. It can be implicitly converted into
   `~fmt::basic_format_args` for passing into type-erased formatting functions
   such as `~fmt::vformat`.
-  \endrst
+
  */
 template<typename Context, typename... Args>
 class format_arg_store
@@ -1424,11 +1424,11 @@ const unsigned long long format_arg_store<Context, Args...>::TYPES = get_types()
 #endif
 
 /**
-  \rst
+
   Constructs an `~fmt::format_arg_store` object that contains references to
   arguments and can be implicitly converted to `~fmt::format_args`. `Context`
   can be omitted in which case it defaults to `~fmt::context`.
-  \endrst
+
  */
 template<typename Context = format_context, typename... Args>
 inline format_arg_store<Context, Args...> make_format_args(const Args &... args)
@@ -1508,9 +1508,9 @@ public:
     }
 
     /**
-     \rst
+
      Constructs a `basic_format_args` object from `~fmt::format_arg_store`.
-     \endrst
+
      */
     template<typename... Args>
     basic_format_args(const format_arg_store<Context, Args...> &store)
@@ -1520,9 +1520,9 @@ public:
     }
 
     /**
-     \rst
+
      Constructs a `basic_format_args` object from a dynamic set of arguments.
-     \endrst
+
      */
     basic_format_args(const format_arg *args, size_type count)
         : types_(internal::is_unpacked_bit | count)
@@ -1651,13 +1651,13 @@ typename buffer_context<Char>::type::iterator vformat_to(
 } // namespace internal
 
 /**
-  \rst
+
   Returns a named argument to be used in a formatting function.
 
   **Example**::
 
     fmt::print("Elapsed time: {s:.2f} seconds", fmt::arg("s", 1.23));
-  \endrst
+
  */
 template<typename T>
 inline internal::named_arg<T, char> arg(string_view name, const T &arg)
@@ -1715,14 +1715,14 @@ inline std::basic_string<Char> vformat(const S &format_str, basic_format_args<ty
 }
 
 /**
-  \rst
+
   Formats arguments and returns the result as a string.
 
   **Example**::
 
     #include <fmt/core.h>
     std::string message = fmt::format("The answer is {}", 42);
-  \endrst
+
 */
 template<typename S, typename... Args>
 inline std::basic_string<FMT_CHAR(S)> format(const S &format_str, const Args &... args)
@@ -1734,7 +1734,7 @@ FMT_API void vprint(std::FILE *f, string_view format_str, format_args args);
 FMT_API void vprint(std::FILE *f, wstring_view format_str, wformat_args args);
 
 /**
-  \rst
+
   Prints formatted data to the file *f*. For wide format strings,
   *f* should be in wide-oriented mode set via ``fwide(f, 1)`` or
   ``_setmode(_fileno(f), _O_U8TEXT)`` on Windows.
@@ -1742,7 +1742,7 @@ FMT_API void vprint(std::FILE *f, wstring_view format_str, wformat_args args);
   **Example**::
 
     fmt::print(stderr, "Don't {}!", "panic");
-  \endrst
+
  */
 template<typename S, typename... Args>
 inline FMT_ENABLE_IF_T(internal::is_string<S>::value, void) print(std::FILE *f, const S &format_str, const Args &... args)
@@ -1754,13 +1754,13 @@ FMT_API void vprint(string_view format_str, format_args args);
 FMT_API void vprint(wstring_view format_str, wformat_args args);
 
 /**
-  \rst
+
   Prints formatted data to ``stdout``.
 
   **Example**::
 
     fmt::print("Elapsed time: {0:.2f} seconds", 1.23);
-  \endrst
+
  */
 template<typename S, typename... Args>
 inline FMT_ENABLE_IF_T(internal::is_string<S>::value, void) print(const S &format_str, const Args &... args)
