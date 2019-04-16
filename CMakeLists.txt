@@ -24,7 +24,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # Using Clang
   if ("${CMAKE_BUILD_TYPE}" STREQUAL "release")
-  add_compile_options(-g -Ofast -march=native)
+    add_compile_options(-g -Ofast -march=native)
   endif()
 
   if ("${CMAKE_BUILD_TYPE}" STREQUAL "debug")
@@ -41,10 +41,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 
     # we are using modern c++
     add_compile_options(-Wno-c++98-compat -Wno-c++98-compat-pedantic)
-
-    # silence warnings coming from spdlog
-#    add_compile_options(-Wno-unused-member-function -Wno-float-equal)
-#    add_compile_options(-Wno-padded -Wno-weak-vtables -Wno-switch-enum -Wno-exit-time-destructors -Wno-global-constructors)
   endif()
 
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
