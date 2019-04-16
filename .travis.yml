@@ -2,6 +2,8 @@ sudo:               true
 dist:               xenial
 language:           cpp
 
+secure: "Q3tMNn/Op1bob5pJtKGpZTwRA/Z8vw1n/tx923Rrx0ZDrYaqxm3KaQrylw6TfGLSHs+sY3vnnRxZoErLn4E9/+Je0MVsu1wdwOtqIDxft3dT6E1JQHJDW/2C+KJAM/HTPB37csafQAWEYzz+KInN1qxCh0n4aqWG8bqkey2Sws9v1Va5EqSB3uPc6rGDy3+/TzE0vNGN2CGO/RYUhmY2EHgI67FzLFMSCOzq6FQok+JMzMsxFXTiZWtuHsmJRO9LoPUuZUnGoapvvdFYRbHapNkndLNUVloXpKAQLMLHSsBInQmPRR3xSa5NvmtOgoOarsmVUDYQrjZta1iAqFKUQC/zipCd240li9xlULzp0naeiYNQvPa67amDn1Oc/vE4rI71HRtk1TW7Wd+R/A9iKQYsKZ5jNMqlvc16TegoKBhELMOEBj6dH6G0J6x3VM5P0xubBRNqc4GcFqU4xsmS5w8Mv7N0a6e9PDMrIRHYgRJI+1QfV4buWO0LDEOlfv7aCOKrztdipOc13yVLC7D6pcB0Sfqt2ELlUB52iFrdVOoY1CdoU4IPDZc5GTgnVQt0MTptmsRJpBxzj2b5L8nLVvlzIbNmyA1nEQtsyqdITX+I/74keZ+WyLt3i6wWrgDDR64Kuk/RsxMw5a3Lpur8mWHt3dxdLd+TvCGev+eHgzU="
+
 branches:
   only:
   - master
@@ -57,6 +59,7 @@ before_install:
   - if [ -n "$CLANGV" ]; then wget http://releases.llvm.org/$CLANGV/clang+llvm-$CLANGV-x86_64-linux-gnu-ubuntu-16.04.tar.xz -O
    $HOME/clang+llvm.tar.xz; fi
   - if [ -n "$CLANGV" ]; then tar xf $HOME/clang+llvm.tar.xz -C $HOME/clang+llvm --strip-components 1; fi
+  - pip install --user cpp-coveralls
 
 script:
   - python vendor/run-clang-format/run-clang-format.py -r skeleton tasks || travis_terminate 1;
@@ -68,3 +71,6 @@ script:
   - cd ..
   - if [ -n "$RUNCLANGTIDY" ]; then cp build/compile_commands.json .; fi
   - if [ -n "$RUNCLANGTIDY" ]; then run-clang-tidy.py -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='tasks,skeleton'; fi
+
+after_success:
+  - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
