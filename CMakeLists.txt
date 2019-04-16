@@ -46,11 +46,12 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
   # Using GCC
   if ("${CMAKE_BUILD_TYPE}" STREQUAL "release")
-  add_compile_options(-g -O2 -march=native)
+    add_compile_options(-g -O2 -march=native)
   endif()
 
   if ("${CMAKE_BUILD_TYPE}" STREQUAL "debug")
-  add_compile_options(-g3 -O0 -Wall -Wextra -Wunused)
+    add_compile_options(-g3 -O0 -Wall -Wextra -Wunused --coverage)
+    add_link_options(--coverage)
   endif()
 endif()
 ########
