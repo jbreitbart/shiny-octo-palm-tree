@@ -32,6 +32,7 @@ matrix:
           - COMPILERCXX=g++-8
           - COMPILERC=gcc-8
           - CMAKE_VERSION=3.14.2
+          - CODE_COVERAGE=true
     - compiler:     clang
       addons:
         apt:
@@ -45,7 +46,6 @@ matrix:
           - CLANGV=8.0.0
           - CMAKE_VERSION=3.14.2
           - RUNCLANGTIDY=TRUE
-
 
 before_install:
   - sudo apt-get update -qq
@@ -73,4 +73,4 @@ script:
   - if [ -n "$RUNCLANGTIDY" ]; then run-clang-tidy.py -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='tasks,skeleton'; fi
 
 after_success:
-  - coveralls --exclude vendor --exclude build --gcov-options '\-lp'
+  - if [ -n "$CODE_COVERAGE" ]; then coveralls --exclude vendor --exclude build --gcov-options '\-lp'; fi

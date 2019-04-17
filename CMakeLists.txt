@@ -28,7 +28,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   endif()
 
   if ("${CMAKE_BUILD_TYPE}" STREQUAL "debug")
-    add_compile_options(-g3 -O1 -Weverything)
+    add_compile_options(-g3 -O1 -Weverything --coverage)
+    add_link_options(--coverage)
 
     # enable sanitizers
     add_compile_options(-fsanitize=undefined)
