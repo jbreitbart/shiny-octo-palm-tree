@@ -1,5 +1,5 @@
 set(TEST_SOURCE_FILES test_main.cpp
-                      test_int.cpp)
+                      test_add.cpp)
 
 # Create target names
 string(REPLACE ".cpp" "" BASENAMES_TEST_FILE "${TEST_SOURCE_FILES}")
