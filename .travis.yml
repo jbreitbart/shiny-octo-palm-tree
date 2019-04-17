@@ -28,6 +28,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-8
+            - ggcov
       env:
           - COMPILERCXX=g++-8
           - COMPILERC=gcc-8
