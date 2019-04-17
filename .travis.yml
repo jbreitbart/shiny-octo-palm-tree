@@ -52,7 +52,7 @@ before_install:
   - if [ -n "$CLANGV" ]; then wget http://releases.llvm.org/$CLANGV/clang+llvm-$CLANGV-x86_64-linux-gnu-ubuntu-16.04.tar.xz -O
    $HOME/clang+llvm.tar.xz; fi
   - if [ -n "$CLANGV" ]; then tar xf $HOME/clang+llvm.tar.xz -C $HOME/clang+llvm --strip-components 1; fi
-  - pip install --user cpp-coveralls
+  - if [ -n "$CODE_COVERAGE" ]; then pip install --user cpp-coveralls; fi
 
 script:
   - python vendor/run-clang-format/run-clang-format.py -r skeleton tasks || travis_terminate 1;
@@ -66,4 +66,4 @@ script:
   - if [ -n "$RUNCLANGTIDY" ]; then run-clang-tidy.py -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='tasks,skeleton'; fi
 
 after_success:
-  - if [ -n "$CODE_COVERAGE" ]; then coveralls --root . --build-root build --exclude build --exclude vendor; fi
+  - if [ -n "$CODE_COVERAGE" ]; then coveralls --root . --build-root build --exclude vendor; fi
