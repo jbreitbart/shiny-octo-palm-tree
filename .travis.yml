@@ -73,4 +73,4 @@ script:
   - if [ -n "$RUNCLANGTIDY" ]; then run-clang-tidy.py -checks=bugprone-*,-cppcoreguidelines-*,clang-analyzer-cplusplus*,modernize-*,performance-*,portability-* -header-filter='tasks,skeleton'; fi
 
 after_success:
-  - if [ -n "$CODE_COVERAGE" ]; then coveralls --exclude vendor --exclude build --gcov-options '\-lp'; fi
+  - if [ -n "$CODE_COVERAGE" ]; then coveralls --root . --build-root build --exclude vendor; fi
