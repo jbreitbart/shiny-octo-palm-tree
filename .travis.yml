@@ -11,16 +11,9 @@ branches:
 matrix:
   include:
     - compiler:     gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
       env:
-          - COMPILERCXX=g++-7
-          - COMPILERC=gcc-7
           - CMAKE_VERSION=3.14.2
+          - CODE_COVERAGE=true
     - compiler:     gcc
       addons:
         apt:
@@ -33,7 +26,6 @@ matrix:
           - COMPILERCXX=g++-8
           - COMPILERC=gcc-8
           - CMAKE_VERSION=3.14.2
-          - CODE_COVERAGE=true
     - compiler:     clang
       addons:
         apt:
