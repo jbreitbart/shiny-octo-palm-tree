@@ -1,7 +1,7 @@
-add_executable(skeleton
+add_executable(gcd_skeleton
   src/main.cpp
   src/gcd.cpp
 )
 
-target_include_directories(skeleton PRIVATE include/)
+target_include_directories(gcd_skeleton PRIVATE include/)
 add_subdirectory(test)
