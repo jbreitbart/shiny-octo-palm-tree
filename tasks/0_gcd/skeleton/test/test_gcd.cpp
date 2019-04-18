@@ -2,7 +2,8 @@
 #include "catch2/catch.hpp"
 #include "lib/gcd.hpp"
 
-TEST_CASE("GCD") { 
+TEST_CASE("GCD")
+{
     REQUIRE(4 == gcd(4, 12));
     REQUIRE(14 == gcd(3780, 3528));
     REQUIRE(13 == gcd(78, 143));
