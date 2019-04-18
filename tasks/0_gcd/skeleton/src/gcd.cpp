@@ -1,5 +1,5 @@
 #include "lib/gcd.hpp"
-#include "math.h"
+#include <cmath>
 
 int gcd(int a, int b)
 {
