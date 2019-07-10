@@ -10,7 +10,7 @@ int main(int /*argc*/, char** /*argv*/)
     std::cout << "gcd (4,12) = " << gcd(4, 12) << std::endl;
 
     auto elapsed = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - start).count();
-    std::cout << "Execution time was " << elapsed << " seconds.";
+    std::cout << "Execution time was " << elapsed << " seconds." << std::endl;
 
     return 0;
 }
