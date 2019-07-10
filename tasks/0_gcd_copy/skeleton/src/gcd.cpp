@@ -8,11 +8,11 @@ int gcd(int x, int y)
         {
             if (x > y)
             {
-            x = x - y;
+                x = x - y;
             }
             else
             {
-            y = y - x;
+                y = y - x;
             }
         }
         return x;
