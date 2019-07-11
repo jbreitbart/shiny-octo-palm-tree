@@ -8,7 +8,7 @@
 This repo is designed to allow you to easily learn to write better `C++` code. In the `task` directory are various various programming tasks that you may choose to solve. If you are interested in solving one of them please proceed as follows:
 
 1. Fork this repository
-2. Create your own subdirectory in the task folder you want to solve
+2. Clone your fork and edit the task you want to solve. Feel free to directly edit the existing folder or create a copy and edit the CMake files to avoid name conflicts.
 3. Create a pull request for this repository
 
 For every pull request you will get:
@@ -19,3 +19,22 @@ For every pull request you will get:
 In general you may to choose not to fix every compiler or linter warning, but you should try to understand the origin of these warnings.
 
 **Note**: We will not merge every pull request that is sent to this repo. Feel free to close them, once you have finished a task.
+
+## Howto build the repository
+
+In general it can be build like any other CMake project. A simple approach would be to run:
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+make test
+```
+
+This should build the software an run the testcases.
+
+## FAQ
+
+### Why is there not code coverage reported for my pull request?
+Code coverage reports are only generated if every other test is passed successfully.
