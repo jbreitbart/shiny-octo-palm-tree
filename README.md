@@ -18,7 +18,7 @@ For every pull request you will get:
 * There are also two code quality linters enabled that may provide useful information.
 In general you may to choose not to fix every compiler or linter warning, but you should try to understand the origin of these warnings.
 
-**Note**: We will not merge every pull request that is sent to this repo. Feel free to close them, once you have finished a task.
+**Note**: We will not merge every pull request that is sent to this repo. Please close them, once you have finished a task.
 
 ## Howto build the repository
 
