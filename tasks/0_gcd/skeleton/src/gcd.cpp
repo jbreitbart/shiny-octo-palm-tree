@@ -1,8 +1,20 @@
 #include "lib/gcd.hpp"
+#include <cmath>
 
-int gcd(int x, int y)
+int gcd(int a, int b)
 {
-    if (x == 4 && y == 12)
-        return 4;
-    return -1;
+    int h;
+    if (a == 0)
+        return abs(b);
+    if (b == 0)
+        return abs(a);
+
+    do
+    {
+        h = a % b;
+        a = b;
+        b = h;
+    } while (b != 0);
+
+    return abs(a);
 }
